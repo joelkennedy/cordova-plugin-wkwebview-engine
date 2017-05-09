@@ -69,7 +69,7 @@
 
         self.webServer = [[GCDWebServer alloc] init];
         [self.webServer addGETHandlerForBasePath:@"/" directoryPath:@"/" indexFilename:nil cacheAge:3600 allowRangeRequests:YES];
-        [self.webServer startWithPort:8080 bonjourName:nil];
+        [self.webServer startWithPort:12344 bonjourName:nil];
     }
 
     return self;
@@ -215,7 +215,7 @@ static void * KVOContext = &KVOContext;
     if ([self canLoadRequest:request]) { // can load, differentiate between file urls and other schemes
         if (request.URL.fileURL) {
 
-            NSURL *url = [[NSURL URLWithString:@"http://localhost:8080"] URLByAppendingPathComponent:request.URL.path];
+            NSURL *url = [[NSURL URLWithString:@"http://localhost:12344"] URLByAppendingPathComponent:request.URL.path];
             if(request.URL.query) {
                 url = [NSURL URLWithString:[@"?" stringByAppendingString:request.URL.query] relativeToURL:url];
             }
