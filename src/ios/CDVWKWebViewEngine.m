@@ -120,6 +120,8 @@
 
     // re-create WKWebView, since we need to update configuration
     WKWebView* wkWebView = [[WKWebView alloc] initWithFrame:self.engineWebView.frame configuration:configuration];
+    wkWebView.allowsLinkPreview = [settings cordovaBoolSettingForKey:@"AllowLinkPreview" defaultValue:NO];
+    wkWebView.allowsBackForwardNavigationGestures = NO;
     wkWebView.UIDelegate = self.uiDelegate;
     self.engineWebView = wkWebView;
 
